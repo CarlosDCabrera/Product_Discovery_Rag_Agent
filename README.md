@@ -21,7 +21,7 @@ Embedding Model: all-MiniLM-L6-v2 via HuggingFace (Context-aware text-to-vector 
 
 Environment: Python 3.10+ and python-dotenv for secure credential management
 
-🚀 Getting Started
+Getting Started
 1. Prerequisites
 Python 3.10 or higher
 
@@ -37,30 +37,35 @@ source venv/bin/activate  # Windows:.\venv\Scripts\activate
 
 # Install libraries
 pip install langchain langchain-google-genai langchain-huggingface langchain-community faiss-cpu python-dotenv
+
 3. Security Configuration
 Create a .env file in the root directory and add your API key:
 
 Code snippet
+
 GOOGLE_API_KEY=your_gemini_api_key_here
+
 4. Running the Agent
 Execute the main script to start a session with the discovery agent:
 
 Bash
+
 python main.py
-🧠 How It Works: The ReAct Loop
+
+How It Works: The ReAct Loop
 The agent follows a cyclic reasoning pattern for every user query:
 
-Thought: The model analyzes the input (e.g., "I need a quiet workspace").
+Thought: The model analyzes the input (e.g., "I need a quiet workspace")
 
-Action: It decides to call the search_products tool.
+Action: It decides to call the search_products tool
 
-Observation: It retrieves items like "Noise-Canceling Headphones" from the FAISS vector store.
+Observation: It retrieves items like "Noise-Canceling Headphones" from the FAISS vector store
 
-Final Response: It synthesizes the retrieved data into a natural language recommendation.
+Final Response: It synthesizes the retrieved data into a natural language recommendation
 
-✨ Future Enhancements
-Multi-Step Reasoning: Integrating a "Price Filter" tool to handle budget constraints via SQL.
+Future Enhancements
+Multi-Step Reasoning: Integrating a "Price Filter" tool to handle budget constraints via SQL
 
-Observability: Adding LangSmith tracing to visualize the agent's internal thought process.
+Observability: Adding LangSmith tracing to visualize the agent's internal thought process
 
-Persistence: Migrating to LangGraph for long-term user memory across sessions.
+Persistence: Migrating to LangGraph for long-term user memory across sessions
