@@ -7,6 +7,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_core.tools import tool
 
 load_dotenv()
+api_key = os.getenv("GOOGLE_API_KEY")
 
 def setup_knowledge_base():
     products = [
@@ -51,15 +52,15 @@ tools = [search_products]
 # 3. AGENT CORE
 # Explicitly create the model object to avoid the Vertex AI import error
 llm = ChatGoogleGenerativeAI(
-    model="gemini-1.5-flash", # gemini-1.5-flash is faster/cheaper for testing
+    model="gemini-flash-latest", # gemini-1.5-flash is faster/cheaper for testing
     temperature=0,
-    google_api_key=os.getenv("GOOGLE_API_KEY")
+    google_api_key=api_key
 )
 
 # Create the agent logic
 agent = create_agent (
-    model="gemini-pro",
-    tools=[search_products],
+    model=llm,
+    tools=tools,
     system_prompt="You are a helpful product assistant. Use the search tool to find items.",
     debug=True
 )
@@ -68,5 +69,5 @@ agent = create_agent (
 if __name__ == "__main__":
     user_input = "I need something for my daily commute to listen to music and block out noise."
     response = agent.invoke({"messages": [{"role": "user", "content": user_input}]})
-    final_message = response["messages"][-1]
-    print(f"\nFinal Answer: {final_message.content}")
+    final_message = response["messages"][-1].content
+    print(f"\nFinal Answer: {final_message}")
