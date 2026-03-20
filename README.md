@@ -28,14 +28,18 @@ Python 3.10 or higher
 A Google Gemini API Key (Get one for free at (https://aistudio.google.com/))
 
 2. Installation
+
 Clone the repository and install the required dependencies:
 
+Create and activate a virtual environment
+
 Bash
-# Create and activate a virtual environment
+
 python -m venv venv
+
 source venv/bin/activate  # Windows:.\venv\Scripts\activate
 
-# Install libraries
+Install libraries
 pip install langchain langchain-google-genai langchain-huggingface langchain-community faiss-cpu python-dotenv
 
 3. Security Configuration
