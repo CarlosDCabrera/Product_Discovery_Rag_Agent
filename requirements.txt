@@ -1,0 +1,7 @@
+langchain.agents
+langchain-community.vectorstores
+langchain-huggingface
+langchain_core.tools
+python-dotenv
+langchain-google-genai
+os
